@@ -1,0 +1,16 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: lab-node-pod
+  namespace: default
+spec:
+  releaseName: lab-node-pod
+  chart:
+    git: https://github.com/embone/node-pod.git
+    path: charts/lab-node-pod
+    ref: master
+  values:
+    image:
+      repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
+      tag: "0.32.0"
+    replicaCount: 3

@@ -1,0 +1,19 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: lab-node-pod
+  namespace: default
+spec:
+  releaseName: lab-node-pod
+  chart:
+    git: https://github.com/wmbone/node-pod.git
+    path: charts/node-pod
+    ref: master
+  values:
+    image:
+      repository: wmbone/node-pod
+      tag: latest
+    replicaCount: 1
+    env:
+      name: MESSAGE
+      value: CI/CD lab!
