@@ -30,7 +30,7 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/386
-          push: true
+          push: false
           tags: wmbone/node-pod:latest
 
       - name: Image digest
