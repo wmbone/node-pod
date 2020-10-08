@@ -1,0 +1,36 @@
+# This is the workflow for node-pod
+# https://github.com/marketplace/actions/build-and-push-docker-images
+
+name: CI
+
+on: [push]
+  branches: master
+
+jobs:
+  Docker_build_job:
+    runs-on: ubuntu-latest
+    name: Docker Build
+    steps:
+      - name: Checkout
+        uses: action/checkout@v2
+      - name: Message
+        run: echo checkout master
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        id: docker buiild
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64,linux/386
+          push: true
+          tags: wmbone/node-pod:latest
+
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
