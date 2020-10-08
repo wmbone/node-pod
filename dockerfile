@@ -4,7 +4,7 @@ ARG IMAGE_CREATE_DATE
 ARG IMAGE_VERSION
 ARG IMAGE_SOURCE_REVISION
 
-# Metadata as defined in OCI image spec annotations - https://github.com/opencontainers/image-spec/blob/master/annotations.md
+#  Metadata as defined in OCI image spec annotations - https://github.com/opencontainers/image-spec/blob/master/annotations.md
 LABEL org.opencontainers.image.title="Node Pod" \
       org.opencontainers.image.description="Image for deploy in Kubernetes and testing CICD" \
       org.opencontainers.image.created=$IMAGE_CREATE_DATE \
