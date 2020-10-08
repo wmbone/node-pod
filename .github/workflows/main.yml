@@ -13,7 +13,7 @@ jobs:
     name: Docker Build
     steps:
       - name: Checkout
-        uses: action/checkout@v2
+        uses: actions/checkout@v2
       - name: Message
         run: echo checkout master
       - name: Set up QEMU
